@@ -1,0 +1,60 @@
+@Api_HostAddress = http://localhost:5000
+@IdentApi_HostAddress = http://localhost:5020
+#
+#GET {{Api_HostAddress}}/Home/
+#Accept: application/json
+
+### Send POST Activities
+POST {{Api_HostAddress}}/Activities/
+Content-Type: application/json
+Accept: application/json
+
+{
+  "id": "e9e87c05-82eb-4522-bc47-f0fcfdde4cab",
+  "userId": "e9e87c05-82eb-4522-bc47-f0fcfdde4cab",
+  "category": "test",
+ "name":"test",
+ "description": "ja",
+ "password":"secret2",
+  "createdAt": "2023-11-12T12:31:13.931Z"
+}
+
+### Login Post
+POST  {{IdentApi_HostAddress}}/Account
+Content-Type: application/json
+Accept: application/json
+
+{
+  "email": "users1@email.com",
+  "password": "secret"
+}
+
+### Send GET Activities
+GET {{Api_HostAddress}}/Activities/
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTIzM2ZjOC1iMjU2LTRkN2UtOTM2Zi01MzY0NDc1MjQyMjAiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMjAiLCJpYXQiOjE2OTk4NjM2NTYsImV4cCI6MTY5OTg2Mzk1NiwidW5pcXVlX25hbWUiOiI2MTIzM2ZjOC1iMjU2LTRkN2UtOTM2Zi01MzY0NDc1MjQyMjAifQ.jPF8CvXSzAslUQuHvgwbtNgrlLUzCbS7CI5Ex_ePPTI
+
+### Send POST Activities
+POST {{Api_HostAddress}}/Activities/
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTIzM2ZjOC1iMjU2LTRkN2UtOTM2Zi01MzY0NDc1MjQyMjAiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMjAiLCJpYXQiOjE2OTk4NjM2NTYsImV4cCI6MTY5OTg2Mzk1NiwidW5pcXVlX25hbWUiOiI2MTIzM2ZjOC1iMjU2LTRkN2UtOTM2Zi01MzY0NDc1MjQyMjAifQ.jPF8CvXSzAslUQuHvgwbtNgrlLUzCbS7CI5Ex_ePPTI
+
+{
+  "name": "Test activity4",
+  "category": "work",
+  "description": "test4"
+}
+
+### Send GET Activities
+GET {{Api_HostAddress}}/Activities/
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTIzM2ZjOC1iMjU2LTRkN2UtOTM2Zi01MzY0NDc1MjQyMjAiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMjAiLCJpYXQiOjE2OTk4NjM2NTYsImV4cCI6MTY5OTg2Mzk1NiwidW5pcXVlX25hbWUiOiI2MTIzM2ZjOC1iMjU2LTRkN2UtOTM2Zi01MzY0NDc1MjQyMjAifQ.jPF8CvXSzAslUQuHvgwbtNgrlLUzCbS7CI5Ex_ePPTI
+
+### Send GET Activities
+GET {{Api_HostAddress}}/Activities/96fdd88a-a98a-4037-866f-ef09eb4712f0
+Content-Type: application/json
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MTIzM2ZjOC1iMjU2LTRkN2UtOTM2Zi01MzY0NDc1MjQyMjAiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjUwMjAiLCJpYXQiOjE2OTk4NjM2NTYsImV4cCI6MTY5OTg2Mzk1NiwidW5pcXVlX25hbWUiOiI2MTIzM2ZjOC1iMjU2LTRkN2UtOTM2Zi01MzY0NDc1MjQyMjAifQ.jPF8CvXSzAslUQuHvgwbtNgrlLUzCbS7CI5Ex_ePPTI

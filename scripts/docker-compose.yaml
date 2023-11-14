@@ -1,0 +1,63 @@
+version: "2.2"
+
+services:
+#  check-rabbit-started:
+#    image: jwilder/dockerize:0.6.1
+#    command: 'dockerize -wait=tcp://mongo:27017'
+  api:
+    build: ../src/Actio.Api
+    restart: on-failure
+    links:
+      - rabbitmq
+      - mongo
+    ports:
+      - "5000:5000"
+    depends_on:
+      rabbitmq:
+        condition: service_started
+  
+  activities-service:
+    build: ../src/Actio.Services.Activities
+    restart: on-failure
+    links:
+      - rabbitmq
+      - mongo
+    ports:
+      - "5010:5010"
+    depends_on:
+      rabbitmq:
+        condition: service_started
+  
+  identity-service:
+    build: ../src/Actio.Services.Identity
+    restart: on-failure
+    links:
+      - rabbitmq
+      - mongo
+    ports:
+      - "5020:5020"
+    depends_on:
+      rabbitmq:
+        condition: service_started
+  
+  mongo:
+    image: mongo
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - "27017:27017"
+  
+  rabbitmq:
+    image: rabbitmq:3.6.5-management
+    ports:
+      - "4369:4369"
+      - "5671:5671"
+      - "5672:5672"
+      - "25672:25672"
+      - "15671:15671"
+      - "15672:15672"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:15672" ]
+      interval: 30s
+      timeout: 10s
+      retries: 5
